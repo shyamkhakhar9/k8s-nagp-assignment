@@ -14,6 +14,9 @@ COPY app/ ./app/
 RUN groupadd --gid 1000 app && useradd --uid 1000 --gid 1000 --home /app app \
     && chown -R app:app /app
 
+ARG BUILD_ID=local
+RUN echo "assignment-api build: ${BUILD_ID}"
+
 ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000

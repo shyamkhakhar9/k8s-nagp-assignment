@@ -361,7 +361,6 @@ aws eks update-kubeconfig --region us-east-2 --name <cluster-name>
 ### Deploy
 
 ```bash
-cd Assignment-1
 ./scripts/build-push.sh              # Build and push API image to ECR
 ./scripts/create-secrets.sh          # Create secrets (interactive)
 ./scripts/deploy.sh                  # Deploy full stack

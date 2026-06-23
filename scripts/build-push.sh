@@ -18,7 +18,8 @@ aws ecr get-login-password --region "${AWS_REGION}" | \
   docker login --username AWS --password-stdin "${ECR_REGISTRY}"
 
 echo "Building ${IMAGE}..."
-docker build -t "${IMAGE}" "${API_DIR}"
+BUILD_ID=$(date -u +%Y%m%d%H%M%S)
+docker build --build-arg BUILD_ID="${BUILD_ID}" -t "${IMAGE}" "${API_DIR}"
 
 echo "Pushing ${IMAGE}..."
 docker push "${IMAGE}"
