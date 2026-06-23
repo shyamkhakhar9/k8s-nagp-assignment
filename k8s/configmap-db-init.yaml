@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init
+  namespace: k8s-demo
+  labels:
+    app: postgres
+data:
+  01-init.sql: |
+    CREATE TABLE IF NOT EXISTS products (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        category VARCHAR(50) NOT NULL,
+        price NUMERIC(10, 2) NOT NULL,
+        stock INTEGER NOT NULL DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    INSERT INTO products (name, category, price, stock) VALUES
+        ('Wireless Mouse', 'Electronics', 29.99, 150),
+        ('Mechanical Keyboard', 'Electronics', 89.99, 75),
+        ('USB-C Hub', 'Electronics', 45.50, 200),
+        ('Standing Desk', 'Furniture', 399.00, 30),
+        ('Ergonomic Chair', 'Furniture', 549.99, 25),
+        ('Notebook Set', 'Stationery', 12.99, 500),
+        ('Desk Lamp', 'Furniture', 34.99, 120),
+        ('Monitor Stand', 'Electronics', 59.99, 90);
