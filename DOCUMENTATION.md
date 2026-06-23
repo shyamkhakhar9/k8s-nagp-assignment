@@ -385,7 +385,3 @@ curl http://<alb-dns>/api/products
 ```bash
 ./scripts/destroy.sh
 ```
-
----
-
-*Document version: 1.0 — Assignment 1, Kubernetes DevOps FinOps 2026*
